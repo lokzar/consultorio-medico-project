@@ -1,0 +1,27 @@
+
+<h1>Agenda una Cita</h1>
+
+<form action="/new/appointment" method="POST">
+
+<label> Día:
+    <input type="text" name="day">
+</label>
+<label> Mes:
+    <input type="text" name="month">
+</label>
+<label> Año:
+    <input type="text" name="year">
+</label> Tipo de Consulta
+<select name="idService">
+
+    {{#each services}}
+        <option value="{{id}}">{{name}}</option>
+    {{/each}}
+
+    {{!-- <option value="prenatal">Consulta Prenatal</option>
+    <option value="ginecologia">Consulta Ginecológica</option>
+    <option value="ultrasonido">Consulta Ultrasonido</option> --}}
+</select>
+<button type="submit">Agendar</button>
+
+</form>
