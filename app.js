@@ -30,8 +30,19 @@ app.use("/", index);
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
 
+// Ruta para citas
 const appointment = require("./routes/appointment.routes")
 app.use("/", appointment);
+
+// Ruta servicios
+const service = require("./routes/service.routes")
+app.use("/", service);
+
+const packageRoutes=require("./routes/package.routes");
+app.use("/", packageRoutes)
+
+const users = require("./routes/user.routes")
+app.use("/", users);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

@@ -12,10 +12,15 @@
 <label> Año:
     <input type="text" name="year">
 </label> Tipo de Consulta
-<select name="service">
-    <option value="prenatal">Consulta Prenatal</option>
-    <option value="gineco">Consulta Ginecológica</option>
-    <option value="ultra">Consulta Ultrasonido</option>
+<select name="idService">
+
+    {{#each services}}
+        <option value="{{id}}">{{name}}</option>
+    {{/each}}
+
+    {{!-- <option value="prenatal">Consulta Prenatal</option>
+    <option value="ginecologia">Consulta Ginecológica</option>
+    <option value="ultrasonido">Consulta Ultrasonido</option> --}}
 </select>
 <button type="submit">Agendar</button>
 
