@@ -1,12 +1,16 @@
+<h1>Registrate!</h1>
 <form action="/auth/signup" method="POST">
-   <label> Username
-      <input type="text" name="username">
+   <label> Usuario
+      <input type="text" name="username" placeholder="Usuario">
    </label>
-   <label> Password
-      <input type="password" name="password">
+      <label> E-Mail
+      <input type="email" name="email" placeholder="correo@gmail.com" >
+   </label>
+   <label> Contraseña
+      <input type="password" name="password" placeholder="*****" minlength="6">
    </label>
 
-   <button type="submit">Submit</button>
+   <button type="submit">Registrate!</button>
 </form>
 
 {{#if errorMessage}}

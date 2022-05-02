@@ -1,0 +1,14 @@
+<h1>Lista de Paquetes</h1>
+
+{{#each data}}
+    <h2>{{name}}</h2>
+    <p>Descripción: {{description}}</p>
+    <p>Precio: {{price}}</p>
+    <a href="/package/{{id}}">Detalle</a>
+    {{!-- <a href="books/{{id}}/edit">Edit</a>
+    <form action="/books/{{id}}/delete" method="POST">
+    <button>Delete</button>
+    </form> --}}
+{{/each}}
+
+<button><a href="/package/create">Crear Paquete</a></button>
