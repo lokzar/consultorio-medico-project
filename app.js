@@ -30,6 +30,14 @@ app.use("/", index);
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
 
+// Ruta para citas
+const appointment = require("./routes/appointment.routes")
+app.use("/", appointment);
+
+// Ruta servicios
+const service = require("./routes/service.routes")
+app.use("/", service);
+
 const packageRoutes=require("./routes/package.routes");
 app.use("/", packageRoutes)
 
