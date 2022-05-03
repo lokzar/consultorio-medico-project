@@ -4,6 +4,8 @@ const Appointment = require("../models/Appointment.model");
 const Service = require("../models/Service.model");
 
 
+// Enviar formulario
+
 router.get("/new/appointment", (req, res, next) => {
     Service.find()
         .then(services => {
@@ -12,6 +14,8 @@ router.get("/new/appointment", (req, res, next) => {
         .catch(error => console.log(error))
     
 })
+
+// Recibir datos
 
 router.post("/new/appointment", (req, res, next) => {
     Appointment.create(req.body)

@@ -4,9 +4,10 @@ const { Schema, model } = require("mongoose");
 
 const appointSchema = new Schema(
   {
-    day: String,
-    month: String,
-    year: String,
+    date: {
+      type: Date,
+      required: true
+    },
     idUser: [{ type: Schema.Types.ObjectId, ref: "User"}],
     idPackage: [{ type: Schema.Types.ObjectId, ref: "Package"}],
     idService: [{ type: Schema.Types.ObjectId, ref: "Service"}]

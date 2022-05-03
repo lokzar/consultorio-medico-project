@@ -3,25 +3,25 @@
 
 <form action="/new/appointment" method="POST">
 
-<label> Día:
-    <input type="text" name="day">
-</label>
-<label> Mes:
-    <input type="text" name="month">
-</label>
-<label> Año:
-    <input type="text" name="year">
-</label> Tipo de Consulta
-<select name="idService">
 
-    {{#each services}}
-        <option value="{{id}}">{{name}}</option>
-    {{/each}}
+<label>Fecha y hora:
 
-    {{!-- <option value="prenatal">Consulta Prenatal</option>
-    <option value="ginecologia">Consulta Ginecológica</option>
-    <option value="ultrasonido">Consulta Ultrasonido</option> --}}
-</select>
+<input type="datetime-local"
+       name="date" value="2022-05-04T09:00"
+       min="2022-05-04T09:00" max="2022-06-04T17:00">
+
+</label>
+
+<label>
+    Tipo de Consulta:
+    <select name="idService">
+
+        {{#each services}}
+            <option value="{{id}}">{{name}}</option>
+        {{/each}}
+
+    </select>
+</label>
 <button type="submit">Agendar</button>
 
 </form>
