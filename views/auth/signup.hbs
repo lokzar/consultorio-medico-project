@@ -1,13 +1,16 @@
 <h1>Registrate!</h1>
-<form action="/auth/signup" method="POST">
-   <label> Usuario
-      <input type="text" name="username" placeholder="Usuario">
+<form action="/auth/signup" method="POST" enctype="multipart/form-data">
+   <label> Ingrese su nombre completo
+      <input type="text" name="username" placeholder="Juanito Perez">
    </label>
       <label> E-Mail
       <input type="email" name="email" placeholder="correo@gmail.com" >
    </label>
    <label> Contraseña
       <input type="password" name="password" placeholder="*****" minlength="6">
+   </label>
+   <label>Subir foto de perfil
+          <input type="file" name="avatar"/>
    </label>
 
    <button type="submit">Registrate!</button>
