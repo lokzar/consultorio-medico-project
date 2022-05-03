@@ -8,6 +8,7 @@ router.get("/services" , (req,res,next) => {
         .then(services => {
             res.render("service/service-list", {services})
         })
+        .catch(error => console.log(error))
 })
 
 router.get("/new/service", (req, res, next) => {
@@ -16,10 +17,8 @@ router.get("/new/service", (req, res, next) => {
 
 router.post("/new/service", (req, res, next) => {
     Service.create(req.body)
-        .then(service => {
-            console.log(service)
-            //res.render("service/service-details")
-            res.send({service})
+        .then(() => {
+            res.redirect("/services")
         })
         .catch(error => console.log(error))
 })

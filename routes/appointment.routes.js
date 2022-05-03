@@ -1,10 +1,16 @@
 
 const router = require("express").Router()
 const Appointment = require("../models/Appointment.model");
+const Service = require("../models/Service.model");
 
 
 router.get("/new/appointment", (req, res, next) => {
-    res.render("appointment/appointment-create")
+    Service.find()
+        .then(services => {
+            res.render("appointment/appointment-create", {services})
+        })
+        .catch(error => console.log(error))
+    
 })
 
 router.post("/new/appointment", (req, res, next) => {
