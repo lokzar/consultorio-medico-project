@@ -24,7 +24,7 @@ const userSchema = new Schema({
   },
   avatar:{
     type:String,
-
+    default:"https://res.cloudinary.com/dz29bpftp/image/upload/v1651610112/consultorio-medico-proyect/profiledefault_ixn76x.png"
   },
   profile:{
     type: String,
