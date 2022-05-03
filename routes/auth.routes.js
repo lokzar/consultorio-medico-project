@@ -4,11 +4,16 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 
+
+
 // How many rounds should bcrypt run the salt (default [10 - 12 rounds])
 const saltRounds = 10;
 
 // Require the User model in order to interact with the database
 const User = require("../models/User.model");
+
+//cloudinary
+const fileUploader = require('../config/cloudinary.config')
 
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
@@ -18,8 +23,8 @@ router.get("/signup", isLoggedOut, (req, res) => {
   res.render("auth/signup");
 });
 
-router.post("/signup", isLoggedOut, (req, res) => {
-  const { username, password, email } = req.body;
+router.post("/signup", isLoggedOut,fileUploader.single("avatar"), (req, res) => {
+  const { username, password, email, avatar } = req.body;
 
   if (!username) {
     return res.status(400).render("auth/signup", {
@@ -63,7 +68,8 @@ router.post("/signup", isLoggedOut, (req, res) => {
         return User.create({
           username,
           password: hashedPassword,
-          email
+          email,
+          avatar:req.file.path
         });
       })
       .then((user) => {

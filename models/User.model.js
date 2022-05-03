@@ -17,17 +17,10 @@ const userSchema = new Schema({
     required: [true, 'Email is required.'],
     match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address.'],
   },
-  package:{
-    type:Schema.Types.ObjectId,
-    ref:'Package'
-  },
-  service:{
-    type:Schema.Types.ObjectId,
-    ref:'Service'
-  },
   appointment:{
     type:Schema.Types.ObjectId,
-    ref:'Appointment'
+    ref:'Appointment',
+    default: null
   },
   avatar:{
     type:String,
