@@ -1,0 +1,12 @@
+<h2>Cambiar permisos del usuario: {{findeduser.name}}</h2>
+ 
+<form action="/user/{{findeduser._id}}/edit" method="post">
+  <label for="profile1"> Usuario: </label>
+    <input type="radio" id="profile1" name="profile" value="user" />
+  
+  <label for="profile2"> Administrador</label>
+    <input type="radio" id="profile2" name="profile" value="admin" />
+  
+ 
+  <button>Guardar cambios</button>
+</form>
