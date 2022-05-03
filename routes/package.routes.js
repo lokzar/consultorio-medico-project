@@ -41,5 +41,25 @@ router.get('/package/:id',(req,res)=>{
 })
 
 
+//EDITAR
+
+router.get("/package/:id/edit",(req,res,next)=>{
+    const{id}=req.params
+    Package.findById(id)
+    .then(package=>{
+        res.render("packages/package-edit",{package})
+    })
+    .catch(err=>console.log(err))
+})
+
+router.post("/package/:id/edit",(req,res,next)=>{
+    const {id}=req.params
+    Package.findByIdAndUpdate(id, req.body, {new: true})
+    .then(()=>{
+        res.redirect(`/package/${id}`)
+    })
+    .catch(err=>console.log(err))
+})
+
 
 module.exports=router;

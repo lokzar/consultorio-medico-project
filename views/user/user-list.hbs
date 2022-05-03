@@ -1,0 +1,9 @@
+<h1>Lista de Usuarios</h1>
+
+{{#each userData}}
+    <h2>{{username}}</h2>
+    <p>Perfil: {{profile}}</p>
+    <a href="/user/{{id}}/edit">Editar permisos</a>
+{{/each}}
+
+<a href="/"><button>Return homepage</button></a>

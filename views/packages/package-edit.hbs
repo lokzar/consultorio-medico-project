@@ -1,0 +1,17 @@
+<h2>Edita el paquete: {{package.name}}</h2>
+ 
+<form action="/package/{{package._id}}/edit" method="post">
+  <label> Nombre:
+    <input type="text" name="name" value="{{package.name}}" />
+  </label>
+ 
+  <label> Descripción:
+    <textarea name="description" cols="30" rows="4">{{package.description}}</textarea>
+  </label>
+ 
+  <label> Precio:
+    <input type="text" name="precio" value="{{package.price}}" />
+  </label>
+ 
+  <button>Guardar cambios</button>
+</form>
