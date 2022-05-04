@@ -8,7 +8,11 @@ const profileCheck = require('../middleware/profileCheck');
 router.get("/services" , (req,res,next) => {
     Service.find()
         .then(services => {
-            res.render("service/service-list", {services,isAdmin})
+            const isAdmin = req.session?.user?.profile=="admin" ? true : false
+            const isLoggedIn = req.session?.user ? true :false
+            const username = req.session?.user?.username
+            const avatar=req.session?.user?.avatar
+            res.render("service/service-list", {services,isAdmin,isLoggedIn,username,avatar})
         })
         .catch(error => console.log(error))
 })
