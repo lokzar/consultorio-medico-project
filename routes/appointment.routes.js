@@ -8,9 +8,13 @@ const Service = require("../models/Service.model");
 // Enviar formulario
 
 router.get("/new/appointment", abletoappointment, (req, res, next) => {
+    const isAdmin = req.session?.user?.profile=="admin" ? true : false
+    const isLoggedIn = req.session?.user ? true :false
+    const username = req.session?.user?.username
+    const avatar=req.session?.user?.avatar
     Service.find()
         .then(services => {
-            res.render("appointment/appointment-create", {services})
+            res.render("appointment/appointment-create", {services,isAdmin,isLoggedIn,username,avatar})
         })
         .catch(error => console.log(error))
     

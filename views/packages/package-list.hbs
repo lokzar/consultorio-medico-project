@@ -3,14 +3,13 @@
 {{#each data}}
     <h2>{{name}}</h2>
     <p>Descripción: {{description}}</p>
-    <p>Precio: {{price}}</p>
     <a href="/package/{{id}}">Detalle</a>
     {{#if ../isAdmin}}
     <a href="/package/{{id}}/edit">Editar</a>
+    <form action="/package/{{id}}/delete" method="POST">
+    <button>Eliminar paquete de la lista</button>
+    </form>
     {{/if}}
-    {{!-- <form action="/books/{{id}}/delete" method="POST">
-    <button>Delete</button>
-    </form> --}}
 {{/each}}
 
 <hr>
