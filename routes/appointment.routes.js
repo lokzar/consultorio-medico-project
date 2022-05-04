@@ -26,9 +26,12 @@ router.post("/new/appointment", (req, res, next) => {
     console.log(appointment)
     Appointment.create(appointment)
         .then(appointment => {
-            console.log(appointment)
-            res.render("appointment/appointment-details", appointment)
-            //res.send({appointment})
+            Service.findById(appointment.idService)
+                .then(serviceFound => {
+                    console.log(appointment)
+                    res.render("appointment/appointment-details", {appointment, serviceFound})
+                })
+                .catch(error => console.log(error))
         })
         .catch(error => console.log(error))
 })
