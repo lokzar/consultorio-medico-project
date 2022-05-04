@@ -28,6 +28,45 @@ const MongoStore = require("connect-mongo");
 // Connects the mongo uri to maintain the same naming structure
 const MONGO_URI = require("../utils/consts");
 
+//Passport
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+
+const User = require("../models/User.model");
+
+passport.serializeUser((user, cb) => cb(null, user._id));
+
+passport.deserializeUser((id, cb) => {
+  User.findById(id)
+    .then(user => cb(null, user))
+    .catch(err => cb(err));
+});
+
+passport.use(
+  new LocalStrategy(
+    { passReqToCallback: true },
+    {
+      usernameField: 'username', // by default
+      passwordField: 'password' // by default
+    },
+    (username, password, done) => {
+      User.findOne({ username })
+        .then(user => {
+          if (!user) {
+            return done(null, false, { message: 'Incorrect username' });
+          }
+
+          if (!bcrypt.compareSync(password, user.password)) {
+            return done(null, false, { message: 'Incorrect password' });
+          }
+
+          done(null, user);
+        })
+        .catch(err => done(err));
+    }
+  )
+);
+
 // Middleware configuration
 module.exports = (app) => {
   // In development environment the app logs
@@ -61,4 +100,15 @@ module.exports = (app) => {
       }),
     })
   );
+  app.use(passport.initialize());
+
+  app.use(passport.session());
 };
+
+
+
+
+
+
+
+

@@ -3,6 +3,7 @@ const router = require("express").Router();
 // ℹ️ Handles password encryption
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
+const passport = require('passport');
 
 
 
@@ -158,5 +159,15 @@ router.get("/logout", isLoggedIn, (req, res) => {
     res.redirect("/");
   });
 });
+
+router.get('/login', (req, res, next) => res.render('auth/login'));
+ 
+router.post(
+  '/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login'
+  })
+);
 
 module.exports = router;

@@ -1,13 +1,14 @@
 
 const router = require("express").Router()
 const abletoappointment = require("../middleware/abletoappointment");
+const userProfileCheck = require("../middleware/userProfileCheck");
 const Appointment = require("../models/Appointment.model");
 const Service = require("../models/Service.model");
 
 
 // Enviar formulario
 
-router.get("/new/appointment", abletoappointment, (req, res, next) => {
+router.get("/new/appointment", abletoappointment,userProfileCheck, (req, res, next) => {
     Service.find()
         .then(services => {
             res.render("appointment/appointment-create", {services})
