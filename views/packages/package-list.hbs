@@ -5,11 +5,14 @@
     <p>Descripción: {{description}}</p>
     <p>Precio: {{price}}</p>
     <a href="/package/{{id}}">Detalle</a>
+    {{#if ../isAdmin}}
     <a href="/package/{{id}}/edit">Editar</a>
+    {{/if}}
     {{!-- <form action="/books/{{id}}/delete" method="POST">
     <button>Delete</button>
     </form> --}}
 {{/each}}
+
 <hr>
 {{#if isAdmin}}
 <button><a href="/package/create">Crear Paquete</a></button>
