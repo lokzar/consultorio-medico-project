@@ -5,18 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>{{appTitle}}</title>
-  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="stylesheet" href="/stylesheets/styles.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 
 <body>
+  
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+            <div class="container px-5">
+                <a class="navbar-brand" href="/">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="/services">Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/package/list">Paquetes</a></li>
+                              {{#unless isAdmin}}
+                        <li class="nav-item"><a class="nav-link" href="/new/appointment">Agendar Cita</a></li>
+                              {{/unless}}
+                        {{#if isLoggedIn}}
+                        <li class="nav-item">{{username}}</li>
+                        <li class="nav-item"><a class="nav-link" href="/auth/logout">Logout</a></li>
+                        {{/if}}
+                        {{#unless isLoggedIn}}
+                        <li class="nav-item"><a class="nav-link" href="/services">Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/package/list">Paquetes</a></li>
+                        {{/unless}}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
   <header>
-    <nav>
+  </header>
+{{!--     <nav>
       <a href="/">Home</a>
-      <a href="/services">Consultas</a>
+      <a href="/services">Servicios</a>
       <a href="/package/list">Paquetes</a>
+      {{#unless isAdmin}}
       <a href="/new/appointment">Agendar Cita</a>
+      {{/unless}}
+
       {{#if isLoggedIn}}
+      {{username}}
+      <img src="{{avatar}}" alt="avatar">
       <a href="/auth/logout">Logout</a>
       {{/if}}
 
@@ -25,8 +56,7 @@
       <a href="/auth/signup">Registrate!</a>
       {{/unless}}
 
-    </nav>
-  </header>
+    </nav> --}}
 
   {{{body}}}
 
