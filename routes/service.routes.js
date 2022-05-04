@@ -1,5 +1,6 @@
 
 const router = require("express").Router()
+const userProfileCheck = require("../middleware/userProfileCheck");
 const Service = require("../models/Service.model");
 
 // Motrar todas las consultas

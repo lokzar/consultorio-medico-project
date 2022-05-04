@@ -1,4 +1,5 @@
 const router = require("express").Router()
+const profileCheck = require("../middleware/profileCheck");
 const User = require("../models/User.model");
 
 router.get("/userWelcome", (req, res) => {
@@ -9,7 +10,7 @@ router.get("/userProfile", (req, res) => {
     res.render("user/user-profile")
 })
 
-router.get("/user/list",(req,res)=>{
+router.get("/user/list",profileCheck,(req,res)=>{
     User.find()
     .then(registeredUsers=>{
         res.render('user/user-list', {userData: registeredUsers} )

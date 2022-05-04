@@ -2,9 +2,10 @@
 
 {{#each userData}}
     <h2>{{username}}</h2>
+    <p>{{email}}</p>
     <p>Perfil: {{profile}}</p>
-    <img src="{{avatar}}"
-    <a href="/user/{{id}}/edit">Editar permisos</a>
+    <img src="{{avatar}}">
+    <a href="/user/{{id}}/edit">Editar Permisos</a>
 {{/each}}
 
 <a href="/"><button>Return homepage</button></a>
