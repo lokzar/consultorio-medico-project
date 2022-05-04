@@ -4,7 +4,8 @@ const router = require("express").Router();
 router.get("/", (req, res, next) => {
   const isAdmin = req.session?.user?.profile=="admin" ? true : false
   const isUser = req.session?.user?.profile=="user" ? true : false
-  res.render("index",{isAdmin,isUser});
+  const isLoggedIn = req.session?.user ? true :false
+  res.render("index",{isAdmin,isUser,isLoggedIn});
 
 });
 

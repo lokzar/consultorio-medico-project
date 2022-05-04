@@ -4,10 +4,12 @@ const profileCheck = require('../middleware/profileCheck');
 const Package=require('../models/Package.model');
 
 router.get('/package/list',(req,res)=>{
+    
     Package.find()
     .then(registeredPackages=>{
-
-        res.render('packages/package-list', {data: registeredPackages} )
+        const isAdmin = req.session?.user?.profile=="admin" ? true : false
+        res.render('packages/package-list', {data: registeredPackages,isAdmin} )
+        console.log({data: registeredPackages,isAdmin})
     })
     .catch(err=>(console.log("Error en find: ",err)))
 })

@@ -10,20 +10,23 @@
 </head>
 
 <body>
+  <header>
     <nav>
       <a href="/">Home</a>
       <a href="/services">Consultas</a>
       <a href="/package/list">Paquetes</a>
       <a href="/new/appointment">Agendar Cita</a>
+      {{#if isLoggedIn}}
       <a href="/auth/logout">Logout</a>
+      {{/if}}
+
+      {{#unless isLoggedIn}}
       <a href="/auth/login">Login</a>
       <a href="/auth/signup">Registrate!</a>
+      {{/unless}}
+
     </nav>
-
-  <header>
-
   </header>
-
 
   {{{body}}}
 
