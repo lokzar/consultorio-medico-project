@@ -22,7 +22,7 @@ router.post("/new/appointment", (req, res, next) => {
     Appointment.create(req.body)
         .then(appointment => {
             console.log(appointment)
-            res.render("appointment/appointment-details")
+            res.render("appointment/appointment-details", appointment)
             //res.send({appointment})
         })
         .catch(error => console.log(error))
