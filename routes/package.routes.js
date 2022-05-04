@@ -1,5 +1,6 @@
 
 const router=require('express').Router();
+const profileCheck = require('../middleware/profileCheck');
 const Package=require('../models/Package.model');
 
 router.get('/package/list',(req,res)=>{
@@ -43,7 +44,7 @@ router.get('/package/:id',(req,res)=>{
 
 //EDITAR
 
-router.get("/package/:id/edit",(req,res,next)=>{
+router.get("/package/:id/edit",profileCheck,(req,res,next)=>{
     const{id}=req.params
     Package.findById(id)
     .then(package=>{
