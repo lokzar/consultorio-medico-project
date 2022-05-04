@@ -8,7 +8,7 @@ const appointSchema = new Schema(
       type: Date,
       required: true
     },
-    idUser: [{ type: Schema.Types.ObjectId, ref: "User"}],
+    idUser: { type: Schema.Types.ObjectId, ref: "User"},
     idPackage: [{ type: Schema.Types.ObjectId, ref: "Package"}],
     idService: [{ type: Schema.Types.ObjectId, ref: "Service"}]
   },

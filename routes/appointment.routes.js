@@ -19,7 +19,12 @@ router.get("/new/appointment", abletoappointment, (req, res, next) => {
 // Recibir datos
 
 router.post("/new/appointment", (req, res, next) => {
-    Appointment.create(req.body)
+    console.log(req.session?.user?._id)
+
+    const appointment = {...req.body, idUser: req.session?.user?._id}
+
+    console.log(appointment)
+    Appointment.create(appointment)
         .then(appointment => {
             console.log(appointment)
             res.render("appointment/appointment-details", appointment)
