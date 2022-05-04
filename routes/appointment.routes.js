@@ -28,8 +28,8 @@ router.post("/new/appointment", (req, res, next) => {
         .then(appointment => {
             Service.findById(appointment.idService)
                 .then(serviceFound => {
-                    console.log(appointment)
-                    res.render("appointment/appointment-details", {appointment, serviceFound})
+                        console.log(appointment)
+                        res.render("appointment/appointment-details", {appointment, serviceFound})
                 })
                 .catch(error => console.log(error))
         })

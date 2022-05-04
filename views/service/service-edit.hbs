@@ -1,0 +1,17 @@
+<h2>Editar Consulta: {{service.name}}</h2>
+
+<form action="/services/{{service.id}}/edit" method="post">
+    <label> Nombre:
+        <input type="text" name="name" value="{{service.name}}" />
+    </label>
+
+    <label> Descripción:
+        <textarea name="details" cols="30" rows="4">{{service.details}}</textarea>
+    </label>
+
+    <label> Precio:
+        <input type="text" name="price" value="{{service.price}}" />
+    </label>
+
+    <button>Guardar cambios</button>
+</form>

@@ -1,13 +1,15 @@
 
 const router = require("express").Router()
 const Service = require("../models/Service.model");
+const profileCheck = require('../middleware/profileCheck');
 
 // Motrar todas las consultas
 
 router.get("/services" , (req,res,next) => {
     Service.find()
         .then(services => {
-            res.render("service/service-list", {services})
+            const isAdmin = req.session?.user?.profile=="admin" ? true : false
+            res.render("service/service-list", {services, isAdmin})
         })
         .catch(error => console.log(error))
 })
@@ -15,7 +17,7 @@ router.get("/services" , (req,res,next) => {
 
 // Crear consulta
 
-router.get("/new/service", (req, res, next) => {
+router.get("/new/service", profileCheck, (req, res, next) => {
     res.render("service/service-create")
 })
 
@@ -38,6 +40,26 @@ router.get('/services/:id',(req,res)=>{
         res.render('service/service-details',{service:idService})
     })
     .catch(error => console.log(error))
+})
+
+// Editar consulta
+
+router.get("/services/:id/edit",profileCheck,(req,res,next)=>{
+    const{id}=req.params
+    Service.findById(id)
+    .then(service=>{
+        res.render("service/service-edit",{service})
+    })
+    .catch(err=>console.log(err))
+})
+
+router.post("/package/:id/edit",(req,res,next)=>{
+    const {id}=req.params
+    Package.findByIdAndUpdate(id, req.body, {new: true})
+    .then(()=>{
+        res.redirect("/services")
+    })
+    .catch(err=>console.log(err))
 })
 
 // Exportar ruta
