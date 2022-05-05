@@ -1,17 +1,24 @@
-<h2>Editar Consulta: {{service.name}}</h2>
+<div class="p-5">
+    <h2>Editar Consulta: {{service.name}}</h2>
 
-<form action="/services/{{service.id}}/edit" method="post">
-    <label> Nombre:
-        <input type="text" name="name" value="{{service.name}}" />
-    </label>
+    <form class="form-control" action="/services/{{service.id}}/edit" method="post">
+        <label class="p-3"> Nombre:
+            <br>
+            <input type="text" name="name" value="{{service.name}}" />
+        </label>
+        <br>
 
-    <label> Descripción:
-        <textarea name="details" cols="30" rows="4">{{service.details}}</textarea>
-    </label>
-
-    <label> Precio:
-        <input type="text" name="price" value="{{service.price}}" />
-    </label>
-
-    <button>Guardar cambios</button>
-</form>
+        <label class="p-3"> Descripción:
+            <br>
+            <textarea name="details" cols="30" rows="4">{{service.details}}</textarea>
+        </label>
+        <br>
+        <label class="p-3"> Precio:
+            <br>
+            <input type="text" name="price" value="{{service.price}}" />
+        </label>
+        <br>
+        <button class="btn btn-primary rounded-pill mt-3">Guardar cambios</button>
+    </form>
+    <a class="btn btn-primary rounded-pill mt-3" href="/services">Regresar a la lista</a>
+</div>
