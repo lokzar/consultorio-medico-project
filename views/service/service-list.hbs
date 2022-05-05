@@ -6,6 +6,9 @@
 
     {{#if ../isAdmin}}
     <a href="/services/{{id}}/edit">Editar</a>
+    <form action="/services/{{id}}/delete" method="POST">
+        <button class="btn btn-primary rounded-pill mt-3">Eliminar Servicio</button>
+    </form>
     {{/if}}
 
     <hr>

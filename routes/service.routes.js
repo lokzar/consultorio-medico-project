@@ -69,8 +69,21 @@ router.get("/services/:id/edit",profileCheck,(req,res,next)=>{
 
 router.post("/services/:id/edit",(req,res,next)=>{
     const {id}=req.params
-    Package.findByIdAndUpdate(id, req.body, {new: true})
+    Service.findByIdAndUpdate(id, req.body, {new: true})
     .then(()=>{
+        res.redirect("/services")
+    })
+    .catch(err=>console.log(err))
+})
+
+// Eliminar consultas
+
+
+router.post("/services/:id/delete", (req,res,next)=>{
+    const {id} = req.params
+    Service.findByIdAndDelete(id)
+    .then(()=>{
+        console.log("deleted")
         res.redirect("/services")
     })
     .catch(err=>console.log(err))
