@@ -3,12 +3,21 @@
     <hr>
     <h2>Nombre: {{userFound.username}}</h2>
     <hr>
-    <img src="{{userFound.avatar}}">
+    <img class="img img-fluid rounded-circle" src="{{userFound.avatar}}">
+    <hr>
+    <h3>Correo: {{userFound.email}}</h3>
     <hr>
     {{#if isAdmin}}
     <h3>Permisos: {{userFound.profile}}</h3>
     {{/if}}
     {{#unless isAdmin}}
-    <h4>Tus Citas: {{userFound.appointment}}</h4>
+    <h3>Estas son tus Citas:</h3>
+    <hr>
+    <ul>
+        {{#each userFound.appointment}}
+        <li>{{date}}</li>
+        <hr>
+        {{/each}}
+    </ul>
     {{/unless}}
 </div>

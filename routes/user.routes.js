@@ -52,6 +52,7 @@ router.get("/user", (req, res) => {
     const userId = req.session?.user?._id
 
     User.findById(userId)
+    .populate("appointment")
         .then(userFound => {
             const isAdmin = req.session?.user?.profile=="admin" ? true : false
             const isLoggedIn = req.session?.user ? true :false

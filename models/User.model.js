@@ -17,11 +17,10 @@ const userSchema = new Schema({
     required: [true, 'Email is required.'],
     match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address.'],
   },
-  appointment:{
+  appointment:[{
     type:Schema.Types.ObjectId,
     ref:'Appointment',
-    default: null
-  },
+  }],
   avatar:{
     type:String,
     default:"https://res.cloudinary.com/dz29bpftp/image/upload/v1651610112/consultorio-medico-proyect/profiledefault_ixn76x.png"
