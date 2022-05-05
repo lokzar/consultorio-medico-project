@@ -1,10 +1,18 @@
 
 <h1>Tu Perfil</h1>
 <hr>
-<h1>Hola: {{userFound.username}}</h1>
+<h1>Hola {{username}}</h1>
 <hr>
-<img src="{{userFound.avatar}}">
+<h3>Correo {{email}}</h3>
 <hr>
-<p>Tus Citas: {{userFound.appointment}}</p>
-
+<img src="{{avatar}}">
+<hr>
+<h3>Estas son tus Citas:</h3>
+<hr>
+<ul>
+    {{#each appointment}}
+    <li>{{date}}</li>
+    <hr>
+    {{/each}}
+</ul>
 

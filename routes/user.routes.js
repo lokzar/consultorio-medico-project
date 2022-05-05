@@ -42,10 +42,11 @@ router.post("/user/:id/edit",(req,res,next)=>{
 router.get("/user", (req, res) => {
     
     const userId = req.session?.user?._id
-
     User.findById(userId)
+    .populate("appointment")
         .then(userFound => {
-            res.render("user/user-details", {userFound})
+            console.log(userFound)
+            res.render("user/user-details", userFound)
         })
         .catch(error => console.log(error))
 })
