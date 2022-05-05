@@ -1,20 +1,26 @@
-<div class="p-5">
-    <h1>Lista de Paquetes</h1>
-
-    {{#each data}}
-    <h2>{{name}}</h2>
-    <a href="/package/{{id}}">Detalle</a>
-    {{#if ../isAdmin}}
-    <a href="/package/{{id}}/edit">Editar</a>
-    <form action="/package/{{id}}/delete" method="POST">
-        <button class="btn btn-primary rounded-pill mt-3">Eliminar paquete de la lista</button>
-    </form>
-    {{/if}}
-    <hr>
-    {{/each}}
-
-
-    {{#if isAdmin}}
-    <a class="btn btn-primary btn-xl rounded-pill mt-5" href="/package/create">Crear un nuevo Paquete</a>
-    {{/if}}
+<h1 class="p-5">Lista de Paquetes</h1>
+<div class="container px-1">
+    <div class="row gx-3 align-items-center">
+        <div class="col-lg-6 order-lg-2">
+            <div><img class="img-fluid3" src="../images/paquetes/embarazos-de-alto-riesgo_web-1200x720.jpg" alt="consulta" /></div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+            <div class="p-1">
+                {{#each data}}
+                <h2>{{name}}</h2>
+                <a href="/package/{{id}}">Detalle</a>
+                {{#if ../isAdmin}}
+                <a href="/package/{{id}}/edit">Editar</a>
+                <form action="/package/{{id}}/delete" method="POST">
+                    <button class="btn btn-primary rounded-pill mt-3">Eliminar paquete de la lista</button>
+                </form>
+                {{/if}}
+                <hr>
+                {{/each}}
+                {{#if isAdmin}}
+                <a class="btn btn-primary btn-xl rounded-pill mt-5" href="/package/create">Crear un nuevo Paquete</a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
 </div>
