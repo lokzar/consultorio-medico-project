@@ -37,4 +37,19 @@ router.post("/user/:id/edit",(req,res,next)=>{
     .catch(err=>console.log(err))
 })
 
+// Perfil del usuario
+
+router.get("/user", (req, res) => {
+    
+    const userId = req.session?.user?._id
+
+    User.findById(userId)
+        .then(userFound => {
+            res.render("user/user-details", {userFound})
+        })
+        .catch(error => console.log(error))
+})
+
+
+
 module.exports = router
