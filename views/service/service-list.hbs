@@ -1,6 +1,6 @@
-<h1>Lista de Consultas</h1>
-
-{{#each services}}
+<div class="p-5">
+    <h1>Lista de Servicios</h1>
+    {{#each services}}
     <h2>{{name}}</h2>
     <a href="/services/{{id}}">Detalles</a>
 
@@ -8,9 +8,11 @@
     <a href="/services/{{id}}/edit">Editar</a>
     {{/if}}
 
-{{/each}}
+    <hr>
 
-<hr>
-{{#if isAdmin}}
-<button><a href="/new/service">Crear Consulta</a></button>
-{{/if}}
+    {{/each}}
+
+    {{#if isAdmin}}
+    <a class="btn btn-primary btn-xl rounded-pill mt-5" href="/new/service">Crear un nuevo Servicio</a>
+    {{/if}}
+</div>

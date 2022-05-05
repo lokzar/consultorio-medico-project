@@ -1,15 +1,18 @@
-<h1>Iniciar Sesión</h1>
-<form action="/auth/login" method="POST">
-   <label> Username
-      <input type="text" name="username">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
+<div class="p-5">
+   <h1>Iniciar Sesión</h1>
+   <form class="form-control" action="/auth/login" method="POST">
+      <label class="p-3"> Nombre
+         <input type="text" name="username">
+      </label>
+      <br>
+      <label class="p-3"> Password
+         <input type="password" name="password">
+      </label>
+      <br>
+      <button class="btn btn-primary btn-xl rounded-pill mt-5" type="submit">Entrar</button>
+   </form>
 
-   <button type="submit">Entrar</button>
-</form>
-
-{{#if errorMessage}}
+   {{#if errorMessage}}
    {{errorMessage}}
-{{/if}}
+   {{/if}}
+</div>
