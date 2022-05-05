@@ -8,10 +8,16 @@ require("./db");
 // Handles http requests (express is node js framework)
 // https://www.npmjs.com/package/express
 const express = require("express");
+const moment = require ("moment");
 
 // Handles the handlebars
 // https://www.npmjs.com/package/hbs
 const hbs = require("hbs");
+hbs.registerHelper("fecha", function(fechaSinFormato){
+
+    const fechaFormateada = moment(fechaSinFormato).format("DD/MM/YYYY hh:mm A")
+    return fechaFormateada
+})
 
 const app = express();
 

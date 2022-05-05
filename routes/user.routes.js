@@ -1,6 +1,7 @@
 const router = require("express").Router()
 const adminProfile = require("../middleware/profileCheck");
 const User = require("../models/User.model");
+const Service = require("../models/Service.model");
 
 router.get("/userWelcome", (req, res) => {
         res.render("user/user-welcome")
@@ -58,6 +59,22 @@ router.get("/user", (req, res) => {
             const isLoggedIn = req.session?.user ? true :false
             const username = req.session?.user?.username
             const avatar=req.session?.user?.avatar
+
+            console.log("Encontrar usuario",userFound)
+
+            userFound.appointment.forEach(servId => {
+                
+                console.log("Encontrar cada consulta:", servId)
+                
+
+                Service.findById(servId.idService)
+                .then(serviceFound => {
+                    console.log("Encontrar nombre de cada consulta:",serviceFound.name)
+                })
+                .catch(error => console.log(error))
+                    
+            })
+
             res.render("user/user-details", {userFound,isAdmin,isLoggedIn,username,avatar})
         })
         .catch(error => console.log(error))
