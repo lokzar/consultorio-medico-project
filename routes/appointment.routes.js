@@ -1,4 +1,3 @@
-
 const router = require("express").Router()
 const abletoappointment = require("../middleware/abletoappointment");
 const Appointment = require("../models/Appointment.model");
@@ -44,6 +43,19 @@ router.post("/new/appointment", (req, res, next) => {
         .catch(error => console.log(error))
 })
 
+//revisar todas las citas
+router.get('/appointment/list',(req,res)=>{
+    Appointment.find()
+    .then(registeredAppointments=>{
+        const isAdmin = req.session?.user?.profile=="admin" ? true : false
+        const isLoggedIn = req.session?.user ? true :false
+        const username = req.session?.user?.username
+        const avatar=req.session?.user?.avatar
+        console.log(registeredAppointments)
+        res.render('appointment/appointment-list', {data: registeredAppointments,isAdmin,isLoggedIn,username,avatar} )
+    })
+    .catch(err=>(console.log("Error en find: ",err)))
+})
 
 
 module.exports = router

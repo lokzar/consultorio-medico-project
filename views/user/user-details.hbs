@@ -1,17 +1,21 @@
-
+<hr>
+<hr>
+<hr>
 <h1>Tu Perfil</h1>
-<hr>
+
 <h1>Hola {{username}}</h1>
-<hr>
+
 <h3>Correo {{email}}</h3>
-<hr>
+
 <img src="{{avatar}}">
 <hr>
 <h3>Estas son tus Citas:</h3>
-<hr>
+
 <ul>
     {{#each appointment}}
     <li>{{date}}</li>
+    <li>{{idService}}</li>
+    
     <hr>
     {{/each}}
 </ul>

@@ -13,7 +13,11 @@ router.get("/userProfile", (req, res) => {
 router.get("/user/list",(req,res)=>{
     User.find()
     .then(registeredUsers=>{
-        res.render('user/user-list', {userData: registeredUsers} )
+        const isAdmin = req.session?.user?.profile=="admin" ? true : false
+        const isLoggedIn = req.session?.user ? true :false
+        const username = req.session?.user?.username
+        const avatar=req.session?.user?.avatar
+        res.render('user/user-list', {userData: registeredUsers,isAdmin,isLoggedIn,username,avatar} )
     })
     .catch(err=>(console.log("Error en find user: ",err)))
 })
@@ -23,7 +27,11 @@ router.get("/user/:id/edit",(req,res,next)=>{
     const{id}=req.params
     User.findById(id)
     .then(findeduser=>{
-        res.render("user/user-edit",{findeduser})
+        const isAdmin = req.session?.user?.profile=="admin" ? true : false
+        const isLoggedIn = req.session?.user ? true :false
+        const username = req.session?.user?.username
+        const avatar=req.session?.user?.avatar
+        res.render("user/user-edit",{findeduser,isAdmin,isLoggedIn,username,avatar})
     })
     .catch(err=>console.log(err))
 })
@@ -42,14 +50,20 @@ router.post("/user/:id/edit",(req,res,next)=>{
 router.get("/user", (req, res) => {
     
     const userId = req.session?.user?._id
+
     User.findById(userId)
     .populate("appointment")
         .then(userFound => {
-            console.log(userFound)
-            res.render("user/user-details", userFound)
+            const isAdmin = req.session?.user?.profile=="admin" ? true : false
+            const isLoggedIn = req.session?.user ? true :false
+            const username = req.session?.user?.username
+            const avatar=req.session?.user?.avatar
+            res.render("user/user-details", {userFound,isAdmin,isLoggedIn,username,avatar})
         })
         .catch(error => console.log(error))
 })
+
+
 
 
 

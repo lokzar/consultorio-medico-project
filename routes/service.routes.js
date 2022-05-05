@@ -1,4 +1,3 @@
-
 const router = require("express").Router()
 const Service = require("../models/Service.model");
 const profileCheck = require('../middleware/profileCheck');
@@ -21,7 +20,11 @@ router.get("/services" , (req,res,next) => {
 // Crear consulta
 
 router.get("/new/service", profileCheck, (req, res, next) => {
-    res.render("service/service-create")
+    const isAdmin = req.session?.user?.profile=="admin" ? true : false
+    const isLoggedIn = req.session?.user ? true :false
+    const username = req.session?.user?.username
+    const avatar=req.session?.user?.avatar
+    res.render("service/service-create", {isAdmin,isLoggedIn,username,avatar})
 })
 
 // Recibir info de formulario para crear consulta
@@ -40,7 +43,11 @@ router.get('/services/:id',(req,res)=>{
     const{id}=req.params;
     Service.findById(id)
     .then(idService=>{
-        res.render('service/service-details',{service:idService})
+        const isAdmin = req.session?.user?.profile=="admin" ? true : false
+        const isLoggedIn = req.session?.user ? true :false
+        const username = req.session?.user?.username
+        const avatar=req.session?.user?.avatar
+        res.render('service/service-details',{service:idService,isAdmin,isLoggedIn,username,avatar})
     })
     .catch(error => console.log(error))
 })
@@ -51,12 +58,16 @@ router.get("/services/:id/edit",profileCheck,(req,res,next)=>{
     const{id}=req.params
     Service.findById(id)
     .then(service=>{
-        res.render("service/service-edit",{service})
+        const isAdmin = req.session?.user?.profile=="admin" ? true : false
+        const isLoggedIn = req.session?.user ? true :false
+        const username = req.session?.user?.username
+        const avatar=req.session?.user?.avatar
+        res.render("service/service-edit",{service,isAdmin,isLoggedIn,username,avatar})
     })
     .catch(err=>console.log(err))
 })
 
-router.post("/package/:id/edit",(req,res,next)=>{
+router.post("/services/:id/edit",(req,res,next)=>{
     const {id}=req.params
     Package.findByIdAndUpdate(id, req.body, {new: true})
     .then(()=>{
