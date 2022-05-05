@@ -1,4 +1,3 @@
-
 const router = require("express").Router()
 const abletoappointment = require("../middleware/abletoappointment");
 const Appointment = require("../models/Appointment.model");

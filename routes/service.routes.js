@@ -1,4 +1,3 @@
-
 const router = require("express").Router()
 const Service = require("../models/Service.model");
 const profileCheck = require('../middleware/profileCheck');
