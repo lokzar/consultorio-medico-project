@@ -1,11 +1,13 @@
-<h1>Lista de Usuarios</h1>
+<div class="p-5">
+    <h1>Lista de Usuarios</h1>
 
-{{#each userData}}
+    {{#each userData}}
     <h2>{{username}}</h2>
-    <p>{{email}}</p>
+    <img class="img img-fluid rounded-circle" src="{{avatar}}">
+    <h4>{{email}}</h4>
     <p>Perfil: {{profile}}</p>
-    <img src="{{avatar}}">
     <a href="/user/{{id}}/edit">Editar Permisos</a>
-{{/each}}
-
-<a href="/"><button>Return homepage</button></a>
+    <hr>
+    {{/each}}
+    <a class="btn btn-primary rounded-pill mt-5" href="/">Regresar a Home</a>
+</div>

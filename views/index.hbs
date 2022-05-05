@@ -1,22 +1,23 @@
 <header class="masthead text-center text-white">
 
+    <div class="masthead-content">
+
+        <div class="container px-5">          
+            <h1 class="masthead-heading mb-0">Dra. Itzel Aguilar</h1>
+            <h2 class="masthead-subheading mb-0">"Comprometida con tu salud"</h2>
+            {{#unless isAdmin}}
+            <a class="btn btn-primary btn-xl rounded-pill mt-5" href="/package/list">Consulta nuestros paquetes</a>
+            <a class="btn btn-primary btn-xl rounded-pill mt-5" href="/services">Consulta nuestros servicios</a>
+            {{/unless}}
+            {{#if isAdmin}}
+            <a class="btn btn-primary btn-xl rounded-pill mt-5" href="/user/list">Ve lista de usuarios</a>
+            <a class="btn btn-primary btn-xl rounded-pill mt-5" href="/appointment/list">Ve todas las citas</a>
+            {{/if}}
+        </div>
 
 
-                <div class="masthead-content">
-                <div class="container px-5">
-                    <h1 class="masthead-heading mb-0">Dra. Itzel Aguilar</h1>
-                    <h2 class="masthead-subheading mb-0">"Comprometida con tu salud"</h2>
-                    {{#unless isAdmin}}
-                    <a class="btn btn-primary btn-xl rounded-pill mt-5" href="/package/list">Consulta nuestros paquetes</a>
-                    <a class="btn btn-primary btn-xl rounded-pill mt-5" href="/services">Consulta nuestros servicios</a>
-                    {{/unless}}
-                    {{#if isAdmin}}
-                    <a class="btn btn-primary btn-xl rounded-pill mt-5" href="/user/list">Ve lista de usuarios</a>
-                    {{/if}}
 
-                </div>
-
-{{!-- <h1 class="titleDra">Dra. Itzel Aguilar</h1>
+        {{!-- <h1 class="titleDra">Dra. Itzel Aguilar</h1>
 
 <h2>"Comprometida con tu salud"</h2>
 
@@ -31,3 +32,4 @@
 {{/if}} --}}
 
 </header>
+

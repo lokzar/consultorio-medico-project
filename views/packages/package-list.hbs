@@ -1,18 +1,21 @@
-<h1>Lista de Paquetes</h1>
+<div class="p-5">
+    <h1>Lista de Paquetes</h1>
 
-{{#each data}}
+    {{#each data}}
     <h2>{{name}}</h2>
     <p>Descripción: {{description}}</p>
     <a href="/package/{{id}}">Detalle</a>
     {{#if ../isAdmin}}
     <a href="/package/{{id}}/edit">Editar</a>
     <form action="/package/{{id}}/delete" method="POST">
-    <button>Eliminar paquete de la lista</button>
+        <button class="btn btn-primary rounded-pill mt-3">Eliminar paquete de la lista</button>
     </form>
     {{/if}}
-{{/each}}
+    <hr>
+    {{/each}}
 
-<hr>
-{{#if isAdmin}}
-<button><a href="/package/create">Crear Paquete</a></button>
-{{/if}}
+
+    {{#if isAdmin}}
+    <a class="btn btn-primary btn-xl rounded-pill mt-5" href="/package/create">Crear un nuevo Paquete</a>
+    {{/if}}
+</div>

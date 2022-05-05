@@ -1,10 +1,14 @@
-
-<h1>Tu Perfil</h1>
-<hr>
-<h1>Hola: {{userFound.username}}</h1>
-<hr>
-<img src="{{userFound.avatar}}">
-<hr>
-<p>Tus Citas: {{userFound.appointment}}</p>
-
-
+<div class="p-5">
+    <h1>Tu Perfil</h1>
+    <hr>
+    <h2>Nombre: {{userFound.username}}</h2>
+    <hr>
+    <img src="{{userFound.avatar}}">
+    <hr>
+    {{#if isAdmin}}
+    <h3>Permisos: {{userFound.profile}}</h3>
+    {{/if}}
+    {{#unless isAdmin}}
+    <h4>Tus Citas: {{userFound.appointment}}</h4>
+    {{/unless}}
+</div>
