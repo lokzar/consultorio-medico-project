@@ -1,13 +1,13 @@
 <div class="p-5">
     <h2>Edita el paquete: {{package.name}}</h2>
 
-    <form action="/package/{{package._id}}/edit" method="post">
+    <form class="form-control" action="/package/{{package._id}}/edit" method="post">
         <label class="p-3"> Nombre:
             <br>
             <input type="text" name="name" value="{{package.name}}" />
         </label>
         <br>
-        <label class="p-3"> Descripción:
+        <label class="p-3"> Incluye:
             <br>
             <textarea name="description" cols="30" rows="4">{{package.description}}</textarea>
         </label>
